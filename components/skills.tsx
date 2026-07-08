@@ -217,15 +217,15 @@ export default function Skills() {
                       </div>
                       <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
                         <motion.div
-                          initial={{ width: 0 }}
+                          initial={{ width: '0%' }}
                           whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true, margin: '-60px' }}
+                          viewport={{ once: true, amount: 0.3 }}
                           transition={{
                             duration: 1.1,
                             delay: 0.2 + sIdx * 0.08,
                             ease: [0.22, 1, 0.36, 1],
                           }}
-                          className="h-full rounded-full bg-gradient-to-r from-primary to-fuchsia-500"
+                          className="h-full rounded-full bg-gradient-to-r from-primary via-fuchsia-500 to-primary"
                         />
                       </div>
                     </li>
