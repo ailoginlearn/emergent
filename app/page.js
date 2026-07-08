@@ -15,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button'
 import AboutPreview from '@/components/about-preview'
 import Skills from '@/components/skills'
+import ContactPreview from '@/components/contact-preview'
 
 const profileImage =
   'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwwfHx8fDE3ODM0MjkyODN8MA&ixlib=rb-4.1.0&q=85'
@@ -270,6 +271,7 @@ export default function HomePage() {
     </section>
     <AboutPreview />
     <Skills />
+    <ContactPreview />
     </>
   )
 }
