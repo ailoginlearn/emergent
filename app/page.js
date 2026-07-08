@@ -78,12 +78,12 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="container mx-auto px-4 py-20 md:py-28 lg:py-32">
+      <div className="container mx-auto px-4 py-14 sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
+          className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16"
         >
           {/* Left column - text */}
           <div className="order-2 text-center lg:order-1 lg:text-left">
@@ -110,7 +110,7 @@ export default function HomePage() {
             {/* Headline */}
             <motion.h1
               variants={item}
-              className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+              className="mt-3 text-[2rem] font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             >
               <span className="block">Alex Morgan.</span>
               <span className="mt-2 block bg-gradient-to-r from-primary via-fuchsia-500 to-primary bg-clip-text text-transparent">
@@ -220,7 +220,7 @@ export default function HomePage() {
 
               {/* Profile image */}
               <motion.div
-                className="relative h-72 w-72 overflow-hidden rounded-full border-4 border-background shadow-2xl sm:h-80 sm:w-80 md:h-96 md:w-96"
+                className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-background shadow-2xl sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-96 lg:w-96"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               >
@@ -229,7 +229,7 @@ export default function HomePage() {
                   alt="Alex Morgan portrait"
                   fill
                   priority
-                  sizes="(max-width: 768px) 288px, 384px"
+                  sizes="(max-width: 640px) 240px, (max-width: 1024px) 320px, 384px"
                   className="object-cover"
                 />
               </motion.div>
@@ -239,14 +239,14 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9, duration: 0.5 }}
-                className="absolute -left-4 top-8 flex items-center gap-2 rounded-2xl border border-border/60 bg-background/90 px-3 py-2 shadow-lg backdrop-blur"
+                className="absolute -left-2 top-4 flex items-center gap-2 rounded-xl border border-border/60 bg-background/90 px-2.5 py-1.5 shadow-lg backdrop-blur sm:-left-4 sm:top-8 sm:rounded-2xl sm:px-3 sm:py-2"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <Sparkles className="h-4 w-4" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary sm:h-8 sm:w-8 sm:rounded-lg">
+                  <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-semibold">Design Systems</div>
-                  <div className="text-[10px] text-muted-foreground">
+                  <div className="text-[11px] font-semibold sm:text-xs">Design Systems</div>
+                  <div className="text-[9px] text-muted-foreground sm:text-[10px]">
                     Expert
                   </div>
                 </div>
@@ -257,10 +257,10 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
-                className="absolute -right-2 bottom-10 rounded-2xl border border-border/60 bg-background/90 px-4 py-3 shadow-lg backdrop-blur"
+                className="absolute -right-1 bottom-6 rounded-xl border border-border/60 bg-background/90 px-3 py-2 shadow-lg backdrop-blur sm:-right-2 sm:bottom-10 sm:rounded-2xl sm:px-4 sm:py-3"
               >
-                <div className="text-2xl font-bold leading-none">6+</div>
-                <div className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">
+                <div className="text-xl font-bold leading-none sm:text-2xl">6+</div>
+                <div className="mt-1 text-[9px] uppercase tracking-wider text-muted-foreground sm:text-[10px]">
                   Years shipping
                 </div>
               </motion.div>

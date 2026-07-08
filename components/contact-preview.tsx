@@ -62,14 +62,13 @@ const fadeUp = {
 
 export default function ContactPreview() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
-      {/* Decorative background */}
+    <section className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-24 right-1/4 h-[420px] w-[420px] rounded-full bg-primary/15 blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 h-[420px] w-[420px] rounded-full bg-fuchsia-500/15 blur-3xl" />
+        <div className="absolute -top-24 right-1/4 h-[300px] w-[300px] rounded-full bg-primary/15 blur-3xl sm:h-[420px] sm:w-[420px]" />
+        <div className="absolute bottom-0 left-1/4 h-[300px] w-[300px] rounded-full bg-fuchsia-500/15 blur-3xl sm:h-[420px] sm:w-[420px]" />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <motion.div
@@ -90,7 +89,7 @@ export default function ContactPreview() {
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             transition={{ delay: 0.1 }}
-            className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+            className="mt-5 text-2xl font-bold tracking-tight sm:mt-6 sm:text-3xl md:text-4xl lg:text-5xl"
           >
             Let&apos;s build something{' '}
             <span className="bg-gradient-to-r from-primary via-fuchsia-500 to-primary bg-clip-text text-transparent">
@@ -104,7 +103,7 @@ export default function ContactPreview() {
             viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-base text-muted-foreground sm:text-lg"
+            className="mt-3 text-sm text-muted-foreground sm:mt-4 sm:text-base md:text-lg"
           >
             Have a project in mind or just want to say hi? Drop a message —
             I&apos;ll get back within a day.
@@ -117,16 +116,15 @@ export default function ContactPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mt-14 max-w-6xl"
+          className="relative mx-auto mt-10 max-w-6xl sm:mt-14"
         >
-          {/* Gradient border glow */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-r from-primary/50 via-fuchsia-500/50 to-primary/50 opacity-70 blur-md"
+            className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-r from-primary/50 via-fuchsia-500/50 to-primary/50 opacity-70 blur-md sm:rounded-3xl"
           />
 
-          <div className="relative rounded-3xl border border-border/60 bg-background/80 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
-            <div className="grid gap-10 lg:grid-cols-5 lg:gap-14">
+          <div className="relative rounded-2xl border border-border/60 bg-background/80 p-4 shadow-2xl backdrop-blur-xl sm:rounded-3xl sm:p-6 md:p-8 lg:p-10">
+            <div className="grid gap-8 sm:gap-10 lg:grid-cols-5 lg:gap-14">
               {/* Left column - info */}
               <div className="lg:col-span-2">
                 <motion.h3
@@ -134,7 +132,7 @@ export default function ContactPreview() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-2xl font-semibold tracking-tight"
+                  className="text-xl font-semibold tracking-tight sm:text-2xl"
                 >
                   Contact information
                 </motion.h3>
@@ -143,23 +141,22 @@ export default function ContactPreview() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mt-2 text-sm text-muted-foreground"
+                  className="mt-2 text-xs text-muted-foreground sm:text-sm"
                 >
                   Prefer a different channel? Pick whichever suits you.
                 </motion.p>
 
-                {/* Channels */}
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
                   {channels.map((c, i) => {
                     const Content = (
-                      <div className="flex items-center gap-4 rounded-2xl border border-border/60 bg-background/60 p-4 transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-lg">
+                      <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-background/60 p-3 transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-lg sm:gap-4 sm:rounded-2xl sm:p-4">
                         <div
-                          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${c.accent}`}
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl ${c.accent}`}
                         >
                           <c.Icon className="h-5 w-5" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                          <div className="text-[10px] uppercase tracking-wider text-muted-foreground sm:text-xs">
                             {c.label}
                           </div>
                           <div className="mt-0.5 truncate text-sm font-medium text-foreground">
@@ -195,13 +192,12 @@ export default function ContactPreview() {
                   })}
                 </ul>
 
-                {/* Socials + availability */}
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.85 }}
-                  className="mt-8 flex flex-wrap items-center justify-between gap-4"
+                  className="mt-6 flex flex-wrap items-center justify-between gap-4 sm:mt-8"
                 >
                   <div className="flex items-center gap-2">
                     {socials.map(({ href, label, Icon }) => (
@@ -211,14 +207,14 @@ export default function ContactPreview() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={label}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/60 text-muted-foreground backdrop-blur transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
+                        className="flex h-9 w-9 items-center justify-center rounded-full border border-border/60 bg-background/60 text-muted-foreground backdrop-blur transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary sm:h-10 sm:w-10"
                       >
                         <Icon className="h-4 w-4" />
                       </a>
                     ))}
                   </div>
 
-                  <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400 sm:px-3 sm:text-xs">
                     <span className="relative flex h-2 w-2">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
@@ -235,14 +231,14 @@ export default function ContactPreview() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.4 }}
                 onSubmit={(e) => e.preventDefault()}
-                className="relative rounded-2xl border border-border/60 bg-gradient-to-br from-background/80 to-background/40 p-6 backdrop-blur sm:p-8 lg:col-span-3"
+                className="relative rounded-xl border border-border/60 bg-gradient-to-br from-background/80 to-background/40 p-4 backdrop-blur sm:rounded-2xl sm:p-6 md:p-8 lg:col-span-3"
               >
-                <div className="mb-6 flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                <div className="mb-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-muted-foreground sm:mb-6 sm:text-xs">
                   <Sparkles className="h-3.5 w-3.5 text-primary" />
                   Quick message
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-xs">
                       Your name
@@ -267,7 +263,7 @@ export default function ContactPreview() {
                   </div>
                 </div>
 
-                <div className="mt-5 space-y-2">
+                <div className="mt-4 space-y-2 sm:mt-5">
                   <Label htmlFor="subject" className="text-xs">
                     Subject
                   </Label>
@@ -278,7 +274,7 @@ export default function ContactPreview() {
                   />
                 </div>
 
-                <div className="mt-5 space-y-2">
+                <div className="mt-4 space-y-2 sm:mt-5">
                   <Label htmlFor="message" className="text-xs">
                     Message
                   </Label>
@@ -290,7 +286,7 @@ export default function ContactPreview() {
                   />
                 </div>
 
-                <div className="mt-6 flex flex-col-reverse items-stretch justify-between gap-3 sm:flex-row sm:items-center">
+                <div className="mt-5 flex flex-col-reverse items-stretch justify-between gap-3 sm:mt-6 sm:flex-row sm:items-center">
                   <Button
                     asChild
                     variant="ghost"
@@ -302,7 +298,7 @@ export default function ContactPreview() {
                     </Link>
                   </Button>
 
-                  <Button type="submit" size="lg" className="group">
+                  <Button type="submit" size="lg" className="group w-full sm:w-auto">
                     Send message
                     <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Button>
