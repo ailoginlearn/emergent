@@ -144,7 +144,7 @@ export default function AboutPreview() {
               custom={1}
               className="mt-5 text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base md:text-lg"
             >
-              What started as a late-night experiment tweaking HTML on a
+              What started as a daylight experiment tweaking HTML on a
               second-hand laptop has grown into six years of shipping products
               for startups and scale-ups around the world. I&apos;ve worn many
               hats — frontend engineer, product designer, and occasional

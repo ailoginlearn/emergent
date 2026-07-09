@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X, Sparkles } from 'lucide-react'
@@ -13,6 +14,9 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
+
+import image from "next/image";
+import logo from "../images/company-logo.png";
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -34,11 +38,16 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-2 text-lg font-bold tracking-tight"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Sparkles className="h-4 w-4" />
-          </span>
+          <Image
+            src="/logo.png"
+            alt="Tanishq logo"
+            width={40}
+            height={40}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
           <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Portfolio
+            Tanishq
           </span>
         </Link>
 
