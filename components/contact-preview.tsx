@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { toast } from 'sonner'
 import {
   Mail,
   MapPin,
@@ -12,6 +14,7 @@ import {
   Linkedin,
   Twitter,
   Sparkles,
+  Loader2,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -23,7 +26,7 @@ const channels = [
     Icon: Mail,
     label: 'Email',
     value: 'hello@alexmorgan.dev',
-    href: 'mailto:hello@alexmorgan.dev',
+    href: 'mailto:tanishqjain18203@gmail.com',
     accent: 'bg-primary/10 text-primary',
   },
   {
@@ -61,6 +64,47 @@ const fadeUp = {
 }
 
 export default function ContactPreview() {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+  const [submitting, setSubmitting] = useState(false)
+
+  const update = (key: keyof typeof form) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setForm((f) => ({ ...f, [key]: e.target.value }))
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (submitting) return
+
+    if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
+      toast.error('Please fill in all fields.')
+      return
+    }
+
+    setSubmitting(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send message.')
+      }
+      toast.success('Message sent! I\u2019ll get back to you soon.')
+      setForm({ name: '', email: '', subject: '', message: '' })
+    } catch (err: any) {
+      toast.error(err?.message || 'Something went wrong. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <section className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -230,7 +274,7 @@ export default function ContactPreview() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.4 }}
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
                 className="relative rounded-xl border border-border/60 bg-gradient-to-br from-background/80 to-background/40 p-4 backdrop-blur sm:rounded-2xl sm:p-6 md:p-8 lg:col-span-3"
               >
                 <div className="mb-5 flex items-center gap-2 text-[10px] font-medium uppercase tracking-widest text-muted-foreground sm:mb-6 sm:text-xs">
@@ -245,8 +289,13 @@ export default function ContactPreview() {
                     </Label>
                     <Input
                       id="name"
+                      name="name"
+                      value={form.name}
+                      onChange={update('name')}
+                      disabled={submitting}
                       placeholder="Jane Doe"
                       className="h-11 bg-background/60"
+                      required
                     />
                   </div>
 
@@ -256,9 +305,14 @@ export default function ContactPreview() {
                     </Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
+                      value={form.email}
+                      onChange={update('email')}
+                      disabled={submitting}
                       placeholder="jane@company.com"
                       className="h-11 bg-background/60"
+                      required
                     />
                   </div>
                 </div>
@@ -269,8 +323,13 @@ export default function ContactPreview() {
                   </Label>
                   <Input
                     id="subject"
+                    name="subject"
+                    value={form.subject}
+                    onChange={update('subject')}
+                    disabled={submitting}
                     placeholder="A new website for our team"
                     className="h-11 bg-background/60"
+                    required
                   />
                 </div>
 
@@ -280,9 +339,14 @@ export default function ContactPreview() {
                   </Label>
                   <Textarea
                     id="message"
+                    name="message"
+                    value={form.message}
+                    onChange={update('message')}
+                    disabled={submitting}
                     placeholder="Tell me a bit about your project, timeline, and goals..."
                     rows={5}
                     className="resize-none bg-background/60"
+                    required
                   />
                 </div>
 
@@ -298,9 +362,23 @@ export default function ContactPreview() {
                     </Link>
                   </Button>
 
-                  <Button type="submit" size="lg" className="group w-full sm:w-auto">
-                    Send message
-                    <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={submitting}
+                    className="group w-full sm:w-auto"
+                  >
+                    {submitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send message
+                        <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </>
+                    )}
                   </Button>
                 </div>
               </motion.form>

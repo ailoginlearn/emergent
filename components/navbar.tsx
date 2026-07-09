@@ -80,8 +80,8 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <Button asChild size="sm">
-            <Link href="/contact">Hire Me</Link>
+          <Button asChild size="lg">
+            <Link href="/contact">Let's Talk</Link>
           </Button>
         </div>
 

@@ -1,6 +1,7 @@
 import './globals.css'
 import { Providers } from './providers'
 import Navbar from '@/components/navbar'
+import { Toaster } from '@/components/ui/sonner'
 
 export const metadata = {
   title: 'Portfolio | Personal Website',
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
               </div>
             </footer>
           </div>
+          <Toaster position="top-right" richColors closeButton />
         </Providers>
       </body>
     </html>

@@ -49,10 +49,7 @@ export default function AboutPreview() {
           variants={fadeUp}
           className="mb-10 flex flex-col items-center text-center sm:mb-14"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-muted-foreground backdrop-blur">
-            <span className="h-1 w-6 rounded-full bg-gradient-to-r from-primary to-fuchsia-500" />
-            About Me
-          </span>
+          
         </motion.div>
 
         <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-20">
@@ -69,7 +66,7 @@ export default function AboutPreview() {
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-primary/30 via-fuchsia-500/20 to-transparent blur-2xl" />
 
               {/* Image frame */}
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-2xl sm:rounded-3xl">
+              <div className="relative aspect-[16/12] w-full  overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-2xl sm:rounded-3xl">
                 <Image
                   src={workspaceImage}
                   alt="Developer workspace"
@@ -122,6 +119,7 @@ export default function AboutPreview() {
           </motion.div>
 
           {/* Right column - content */}
+
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -129,6 +127,13 @@ export default function AboutPreview() {
             transition={{ staggerChildren: 0.12 }}
             className="relative"
           >
+
+            <span className="inline-flex items-center mb-5 gap-2 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-muted-foreground backdrop-blur">
+            <span className="h-1 w-6 rounded-full bg-gradient-to-r from-primary to-fuchsia-500" />
+            About Me
+          </span>
+
+          
             <motion.h2
               variants={fadeUp}
               className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
