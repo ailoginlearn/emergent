@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const RECIPIENT = 'tanishqjain18203@gmail.com'
+const RECIPIENT = 'ailogin.learn@gmail.com'
 
 const escapeHtml = (str = '') =>
   str
