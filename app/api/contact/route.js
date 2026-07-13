@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
+import crypto from 'crypto'
 import { Resend } from 'resend'
+import { getCol } from '@/lib/mongo'
 
 const RECIPIENT = 'ailogin.learn@gmail.com'
 
@@ -15,7 +17,6 @@ export async function POST(request) {
   try {
     const { name, email, subject, message } = await request.json()
 
-    // Basic validation
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { success: false, error: 'All fields are required.' },
@@ -29,6 +30,24 @@ export async function POST(request) {
       )
     }
 
+    // 1. Persist to Mongo (so admin panel can list)
+    try {
+      const contacts = await getCol('contacts')
+      await contacts.insertOne({
+        _id: crypto.randomUUID(),
+        name,
+        email,
+        subject,
+        message,
+        status: 'unread',
+        starred: false,
+        createdAt: new Date(),
+      })
+    } catch (dbErr) {
+      console.error('Contact DB save failed:', dbErr)
+    }
+
+    // 2. Send email via Resend
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) {
       return NextResponse.json(
@@ -36,7 +55,6 @@ export async function POST(request) {
         { status: 500 }
       )
     }
-
     const resend = new Resend(apiKey)
 
     const html = `

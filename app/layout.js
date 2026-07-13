@@ -1,6 +1,7 @@
 import './globals.css'
 import { Providers } from './providers'
 import Navbar from '@/components/navbar'
+import SiteFooter from '@/components/site-footer'
 import { Toaster } from '@/components/ui/sonner'
 
 export const metadata = {
@@ -19,11 +20,7 @@ export default function RootLayout({ children }) {
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
-            <footer className="border-t border-border/40 py-6">
-              <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-                &copy; {new Date().getFullYear()} Portfolio. All rights reserved.
-              </div>
-            </footer>
+            <SiteFooter />
           </div>
           <Toaster position="top-right" richColors closeButton />
         </Providers>
